@@ -13,7 +13,14 @@ class DijitiController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('dijiti/index.html.twig', [
+        return $this->render('index.html.twig', [
+            'controller_name' => 'DijitiController',
+        ]);
+    }
+
+    public function gestione_utenti(): Response
+    {
+        return $this->render('gestione_utenti.html.twig', [
             'controller_name' => 'DijitiController',
         ]);
     }

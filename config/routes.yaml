@@ -1,3 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+index_index:
+    path: /index
+    controller: App\Controller\DijitiController::index
+
+index_gestione_utenti:
+    path: /index/gestione_utenti
+    controller: App\Controller\DijitiController::gestione_utenti
