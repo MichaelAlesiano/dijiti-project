@@ -5,3 +5,7 @@ index_index:
 index_gestione_utenti:
     path: /index/gestione_utenti
     controller: App\Controller\DijitiController::gestione_utenti
+
+index_gestione_database:
+    path: /index/gestione_database
+    controller: App\Controller\DijitiController::gestione_database

@@ -5,7 +5,46 @@ Gestione utenti | Dijiti
 {% endblock %}
 
 {% block main %}
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum vero nam exercitationem quibusdam omnis aliquam non odio quaerat deleniti sed repellat et, quod eos esse a facilis adipisci labore! Delectus!</p>
+    <h2>Inserisci i dati dell'utente</h2>
+    {{ form_start(userForm) }}
+    {{ form_rest(userForm) }}
+    <input class="invia" type="submit">
+    {{ form_end(userForm) }}
+
+{# Flash Messages #}
+{# read and display all flash messages #}
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
+{% endblock %}
+
+{% block table %}
+    <h2>Database</h2>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Telefono</th>
+        </tr>
+    {% for user in users %}
+        <tr>
+            <td>{{user.nome}}</td>
+            <td>{{user.cognome}}</td> 
+            <td>{{user.email}}</td> 
+            <td>{{user.username}}</td> 
+            <td>{{user.password}}</td>
+            <td>{{user.telefono}}</td>  
+        </tr>
+    {% endfor %}
+    </table>
 {% endblock %}
 
 

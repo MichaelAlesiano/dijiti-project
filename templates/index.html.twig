@@ -24,6 +24,7 @@
                 <ul class="navbar-nav mr-auto">
                     <a class="nav-link" href="{{ path('index_index') }}">Home</a>
                     <a class="nav-link" href="{{ path('index_gestione_utenti') }}">Gestione utenti</a>
+                    <a class="nav-link" href="{{ path('index_gestione_database') }}">Gestione database</a>
                 </ul>                
             </div>
         </div>
@@ -40,6 +41,10 @@
                     Benvenuto nella prova tecnica di Michael Alesiano
                 </div>
             {% endblock %}    
+            </div>
+            <div class="myTable">
+            {% block table %}
+            {% endblock %}
             </div>
         </div>
     </main>
@@ -96,4 +101,30 @@
         .title {
             font-size: 70px;
         }
+
+        {# Gestione utenti #}
+        .invia {
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .alert {
+            margin-top: 10px;
+        }
+
+        {# Table #}
+        .myTable {
+            margin-left: 180px;
+        }
+
+        table th {
+            padding-right: 100px;
+            border: 1px solid black;
+            font-size: 20px;
+        }
+
+        table td {
+            border: 1px solid black;
+        }
+
     </style>
