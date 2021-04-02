@@ -21,7 +21,7 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, ['attr' => ['maxlength' => 40]])
             ->add('username', TextType::class, ['attr' => ['maxlength' => 10]])
             ->add('password', PasswordType::class, ['attr' => ['maxlength' => 10]])
-            ->add('telefono', NumberType::class, ['attr' => ['maxlength' => 10]])
+            ->add('telefono', NumberType::class, ['attr' => ['maxlength' => 15]])
         ;
     }
 

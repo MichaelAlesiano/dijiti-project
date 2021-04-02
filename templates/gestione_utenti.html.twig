@@ -11,6 +11,7 @@ Gestione utenti | Dijiti
     <input class="invia" type="submit">
     {{ form_end(userForm) }}
 
+
 {# Flash Messages #}
 {# read and display all flash messages #}
 {% for label, messages in app.flashes %}
@@ -21,6 +22,16 @@ Gestione utenti | Dijiti
     {% endfor %}
 {% endfor %}
 
+{% endblock %}
+
+{% block form %}
+<form action="" method="post" name="uploadCsv" enctype="multipart/form-data">
+    <div class="csv-box">
+        <h3>Inserisci qui il tuo file CSV</h3>
+        <input type="file" name="file" accept=".csv">
+        <button class="myBtn" type="submit" name="import">Carica</button>
+    </div>
+</form>
 {% endblock %}
 
 {% block table %}

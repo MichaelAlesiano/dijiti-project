@@ -13,6 +13,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use League\Csv\Reader;
+use mysqli;
 
 class DijitiController extends AbstractController
 {
@@ -23,7 +25,7 @@ class DijitiController extends AbstractController
      * @return Response
      */
     public function index()
-    {
+    {   
         return $this->render('index.html.twig', [
             'controller_name' => 'DijitiController',
         ]);
@@ -57,6 +59,23 @@ class DijitiController extends AbstractController
             ->subject('!ATTENZIONE!')
             ->html('<p>Qualcosa è cambiato nel Database</p>');
             $mailer->send($email);
+        }
+
+        $conn = mysqli_connect("localhost", "root", "root", "dijiti");
+
+        if (isset($_POST["import"])){
+            $fileName = $_FILES["file"]["tmp_name"];
+
+            if ($_FILES["file"]["size"] > 0) {
+                $file = fopen($fileName, "r");
+
+                while(($column = fgetcsv($file, 10000, ",")) !==FALSE) {
+                    $sqlInsert = "Insert into user (nome,cognome,email,username,password,telefono) values ('" . $column[0] . " ', '" . $column[1] . " ', '" . $column[2] . " ', '" . $column[3] . " ', '" . $column[4] . " ', '" . $column[5] . " ')";
+
+                    $result = mysqli_query($conn, $sqlInsert);
+
+                }
+            }
         }
 
         $users = $userRepository->findAll();
